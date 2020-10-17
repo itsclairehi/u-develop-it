@@ -1,18 +1,18 @@
 const express = require('express');
-const PORT = process.env.PORT || 3001;
-const app = express();
 const db = require('./db/database');
 
-
+const PORT = process.env.PORT || 3001;
+const app = express();
 
 const apiRoutes = require('./routes/apiRoutes');
-//use apiRoutes
-app.use('/api', apiRoutes);
+
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+//use apiRoutes
+app.use('/api', apiRoutes);
 
 // Default response for any other request(Not Found) Catch all
 app.use((req, res) => {
